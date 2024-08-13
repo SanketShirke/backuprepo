@@ -1,0 +1,19 @@
+name: Mirror repo to S3
+on:
+  push:
+    branches:
+      - main
+jobs:
+  s3Backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: S3 Backup
+        uses: peter-evans/s3-backup@v1
+        env:
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+          MIRROR_TARGET: sanket-backup-bucket
+          aws-region: us-east-1  
+        with:
+          args: --overwrite --remove
