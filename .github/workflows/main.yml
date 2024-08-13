@@ -13,7 +13,7 @@ jobs:
         env:
           ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-          MIRROR_TARGET: yash-backup-bucket/UI
+          MIRROR_TARGET: anandaswati
           aws-region: ap-south-1  
         with:
           args: --overwrite --remove
